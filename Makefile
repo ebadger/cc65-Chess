@@ -9,7 +9,8 @@
 
 # Space or comma separated list of cc65 supported target platforms to build for.
 # Default: c64 (lowercase!)
-TARGETS := apple2 atari atmos c64 c64.chr cx16
+TARGETS := ebadger
+# apple2 atari atmos c64 c64.chr cx16
 
 # Name of the final, single-file executable.
 # Default: name of the current dir with target name appended
@@ -27,7 +28,8 @@ CONFIG  :=
 
 # Additional C compiler flags and options.
 # Default: none
-CFLAGS  =
+CFLAGS  = 
+cc65-Chess.ebadger: CFLAGS += --cc-args --inline-stdfuncs  --cc-args -O
 
 # Additional assembler flags and options.
 # Default: none
@@ -36,7 +38,8 @@ ASFLAGS =
 # Additional linker flags and options.
 # Default: none
 LDFLAGS =
-cc65-Chess.apple2: LDFLAGS += --start-addr 0x4000 -Wl -D -Wl __HIMEM__=0xBF00
+#cc65-Chess.apple2: LDFLAGS += --start-addr 0x4000 -Wl -D -Wl __HIMEM__=0xBF00
+cc65-Chess.ebadger: LDFLAGS += --start-addr 0x4000 -Wl -D -Wl __HIMEM__=0xBF00
 
 # Path to the directory containing C and ASM sources.
 # Default: src
